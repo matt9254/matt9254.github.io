@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+在1月的发布会上， 微软便宣布Win7/8/8.1用户可以在第一年升级到Windows 10正式版，  而在半个月前，很多人的电脑已经出现了预定Windows 10的消息，其中有很多都是盗版，那么微软此举是非常明智的。本来盗版用户就无法创造收益，所以在免费升级到Windows 10之后，毕竟还可以靠应用赚钱，微软并不傻。
+
+我从去年10月就第一时间加入了Windows Insider， 并且用到现在的10130，并没有什么过大的问题，除了9879的硬盘丢失问题。目前来说，主流较大的应用软件都可以流畅使用。  并且在Windows Insider负责人的推特下，也说明了在下个预览版本到来之前注册Windows Insider、绑定微软账户（MSA）、正常使用就可以升级到正式版（这段6月21日写的）
+
+微软在21日晚上突然变卦，必须要正版Win7/8.1授权才可以升级到Win10，这么多人想从盗版洗白，包括我（电脑里就一个Win10预览版） ，但是微软这么一改，让无数预览版用户都失望了啊.
+
+但是微软一直在变，我这几天一直看着IT之家，给大家几个文章，按顺序来的，看完就要晕了。
+
+1、《微软：Win10 Insider会员直接免费升级正式版》
+
+2、《微软变卦：Win10 Insider预览版激活正式版必需Win7/Win8.1授权》
+
+3、《微软再确认：Win10预览版可免费升级正式版并保持激活》
+
+这个一直都在睡啊，特别XX，一会说能升级，一会又说不行，然后又说行，一直都在大起大落，真的是很恶心啊。
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<p>在1月的发布会上， 微软便宣布Win7/8/8.1用户可以在第一年升级到Windows 10正式版，  而在半个月前，很多人的电脑已经出现了预定Windows 10的消息，其中有很多都是盗版，那么微软此举是非常明智的。本来盗版用户就无法创造收益，所以在免费升级到Windows 10之后，毕竟还可以靠应用赚钱，微软并不傻。</p>
+
+<p>我从去年10月就第一时间加入了Windows Insider， 并且用到现在的10130，并没有什么过大的问题，除了9879的硬盘丢失问题。目前来说，主流较大的应用软件都可以流畅使用。  并且在Windows Insider负责人的推特下，也说明了在下个预览版本到来之前注册Windows Insider、绑定微软账户（MSA）、正常使用就可以升级到正式版（这段6月21日写的）</p>
+
+<p>微软在21日晚上突然变卦，必须要正版Win7/8.1授权才可以升级到Win10，这么多人想从盗版洗白，包括我（电脑里就一个Win10预览版） ，但是微软这么一改，让无数预览版用户都失望了啊.</p>
+
+<p>但是微软一直在变，我这几天一直看着IT之家，给大家几个文章，按顺序来的，看完就要晕了。</p>
+
+<p>1、《微软：Win10 Insider会员直接免费升级正式版》</p>
+
+<p>2、《微软变卦：Win10 Insider预览版激活正式版必需Win7/Win8.1授权》</p>
+
+<p>3、《微软再确认：Win10预览版可免费升级正式版并保持激活》</p>
+
+<p>这个一直都在睡啊，特别XX，一会说能升级，一会又说不行，然后又说行，一直都在大起大落，真的是很恶心啊。</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "post-201501.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
